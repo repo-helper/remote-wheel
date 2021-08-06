@@ -10,6 +10,11 @@ Access files from a remote wheel.
 #
 #  Copyright © 2021 Dominic Davis-Foster <dominic@davis-foster.co.uk>
 #
+#  Some documentation from
+#  https://github.com/jwodder/pypi-simple
+#  Copyright (c) 2018-2020 John Thorvald Wodder II
+#  MIT Licensed
+#
 #  Permission is hereby granted, free of charge, to any person obtaining a copy
 #  of this software and associated documentation files (the "Software"), to deal
 #  in the Software without restriction, including without limitation the rights
@@ -195,6 +200,19 @@ class RemoteWheelDistribution(DistributionType, Tuple[str, Version, str, handy_a
 
 			If the server lacks support, you should instead download the wheel with a standard GET_
 			request and use the :class:`dist_meta.distributions.WheelDistribution` class.
+
+		.. note::
+
+			If the remote server requires authentication (e.g. a private package repository),
+			construct a :class:`~.RemoteZipFile` -- passing the authentication information to its constructor --
+			then create a :class:`~.RemoteWheelDistribution` manually:
+
+			.. code-block:: python
+
+				from remote_wheel import RemoteZipFile, RemoteWheelDistribution
+				url = "https://my.private.repository/wheels/toml-0.10.2-py2.py3-none-any.whl"
+				wheel_zip = RemoteZipFile(url, initial_buffer_size=100, auth=("user", "password"))
+				wheel = RemoteWheelDistribution("toml", Version("0.10.2"), url, wheel_zip)
 
 		:rtype: :class:`~.RemoteWheelDistribution`
 		"""  # noqa: RST306
