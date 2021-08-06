@@ -4,7 +4,7 @@ build-backend = "whey"
 
 [project]
 name = "remote-wheel"
-version = "0.0.0"
+version = "0.1.0"
 description = "Access files from a remote wheel."
 readme = "README.rst"
 keywords = [ "dist-info", "http-range", "metadata", "pep427", "pypi", "wheel",]
