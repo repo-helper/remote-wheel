@@ -1,0 +1,6 @@
+apeye>=1.1.0
+dist-meta>=0.3.0
+handy-archives>=0.1.0
+packaging>=21.0
+remotezip>=0.9.3
+requests>=2.26.0

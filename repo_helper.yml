@@ -1,0 +1,63 @@
+# Configuration for 'repo_helper' (https://github.com/domdfcoding/repo_helper)
+---
+modname: 'remote-wheel'
+copyright_years: '2021'
+author: 'Dominic Davis-Foster'
+email: 'dominic@davis-foster.co.uk'
+username: 'repo-helper'
+assignee: 'domdfcoding'
+version: '0.0.0'
+license: 'MIT'
+short_desc: 'Access files from a remote wheel.'
+
+use_whey: true
+min_coverage: 97
+docs_fail_on_warning: true
+sphinx_html_theme: furo
+mypy_version: "0.910"
+enable_conda: false
+
+python_versions:
+ - '3.7'
+ - '3.8'
+ - '3.9'
+ - 3.10-dev
+ - pypy37
+
+sphinx_conf_epilogue:
+ - nitpicky = True
+ - autosummary_widths_builders = ["latex"]
+ - ignore_missing_xrefs = ["^remotezip.RemoteZip$"]
+
+keywords:
+ - wheel
+ - http-range
+ - dist-info
+ - metadata
+ - pypi
+ - pep427
+
+extra_sphinx_extensions:
+ - sphinx_toolbox_experimental.html_section
+ - sphinx_toolbox_experimental.autosummary_widths
+ - sphinx_toolbox_experimental.needspace
+ - sphinx_toolbox_experimental.succinct_seealso
+ - sphinx_toolbox_experimental.peps
+ - sphinx_toolbox_experimental.missing_xref
+
+exclude_files:
+ - contributing
+
+intersphinx_mapping:
+ - "'shippinglabel': ('https://shippinglabel.readthedocs.io/en/latest/', None)"
+ - "'entrypoints': ('https://entrypoints.readthedocs.io/en/latest/', None)"
+
+mypy_deps:
+ - git+https://github.com/repo-helper/remotezip-stubs
+ - types-requests
+
+classifiers:
+ - 'Development Status :: 4 - Beta'
+ - 'Intended Audience :: Developers'
+ - 'Topic :: Software Development :: Libraries :: Python Modules'
+ - 'Topic :: System :: Archiving :: Packaging'
