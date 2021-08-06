@@ -151,7 +151,7 @@ class RemoteWheelDistribution(DistributionType, Tuple[str, Version, str, handy_a
 	:param name: The name of the distribution.
 
 	A :class:`~.RemoteWheelDistribution` can be used as a contextmanager,
-	which will close the underlying :class:`zipfile.ZipFile` when exiting
+	which will close the underlying :class:`~.RemoteZipFile` when exiting
 	the :keyword:`with` block.
 	"""  # noqa: RST399
 
@@ -200,6 +200,8 @@ class RemoteWheelDistribution(DistributionType, Tuple[str, Version, str, handy_a
 
 			If the server lacks support, you should instead download the wheel with a standard GET_
 			request and use the :class:`dist_meta.distributions.WheelDistribution` class.
+
+		.. latex:clearpage::
 
 		.. note::
 

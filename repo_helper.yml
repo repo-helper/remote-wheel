@@ -44,6 +44,7 @@ extra_sphinx_extensions:
  - sphinx_toolbox_experimental.succinct_seealso
  - sphinx_toolbox_experimental.peps
  - sphinx_toolbox_experimental.missing_xref
+ - local_extension
 
 exclude_files:
  - contributing

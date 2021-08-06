@@ -2,6 +2,7 @@
 API Reference
 =================
 
+.. autosummary-widths:: 53/100
 
 .. automodule:: remote_wheel
 	:member-order: bysource
@@ -10,6 +11,8 @@ API Reference
 
 .. autonamedtuple:: remote_wheel.RemoteWheelDistribution
 	:no-show-inheritance:
+
+.. latex:clearpage::
 
 .. autoclass:: remote_wheel.RemoteZipFile
 	:no-show-inheritance:
