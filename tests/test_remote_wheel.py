@@ -1,6 +1,5 @@
 # stdlib
 import os
-import pathlib
 import zipfile
 from typing import Type, Union
 
@@ -123,7 +122,7 @@ class TestRemoteWheelDistribution:
 
 		assert wd.wheel_zip.fp is None
 
-	def test_remotezip_ionos(self, advanced_file_regression: AdvancedFileRegressionFixture):
+	def test_remotezip_ionos(self):
 
 		with pytest.raises(
 				remotezip.RangeNotSupported,
