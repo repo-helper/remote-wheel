@@ -56,8 +56,8 @@ remote-wheel
 	:target: https://github.com/repo-helper/remote-wheel/actions?query=workflow%3A%22mypy%22
 	:alt: mypy status
 
-.. |requires| image:: https://dependency-dash.herokuapp.com/github/repo-helper/remote-wheel/badge.svg
-	:target: https://dependency-dash.herokuapp.com/github/repo-helper/remote-wheel/
+.. |requires| image:: https://dependency-dash.repo-helper.uk/github/repo-helper/remote-wheel/badge.svg
+	:target: https://dependency-dash.repo-helper.uk/github/repo-helper/remote-wheel/
 	:alt: Requirements Status
 
 .. |coveralls| image:: https://img.shields.io/coveralls/github/repo-helper/remote-wheel/master?logo=coveralls
