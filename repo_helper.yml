@@ -26,8 +26,8 @@ python_versions:
 
 sphinx_conf_epilogue:
  - nitpicky = True
- - autosummary_widths_builders = ["latex"]
  - ignore_missing_xrefs = ["^remotezip.RemoteZip$"]
+ - needspace_amount = r"5\baselineskip"
 
 keywords:
  - wheel
@@ -38,11 +38,10 @@ keywords:
  - pep427
 
 extra_sphinx_extensions:
- - sphinx_toolbox_experimental.html_section
- - sphinx_toolbox_experimental.autosummary_widths
- - sphinx_toolbox_experimental.needspace
- - sphinx_toolbox_experimental.succinct_seealso
- - sphinx_toolbox_experimental.peps
+ - html_section
+ - sphinx_toolbox.more_autosummary.column_widths
+ - sphinx_toolbox.latex.succinct_seealso
+ - sphinx_packaging.peps
  - sphinx_toolbox_experimental.missing_xref
  - local_extension
 

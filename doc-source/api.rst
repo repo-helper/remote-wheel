@@ -33,3 +33,5 @@ API Reference
 				])
 
 	This global attribute should not be changed by other code.
+	Instead, pass :class:`~.RemoteZipFile` a :class:`~apeye.requests_url.RequestsURL` object
+	with your own requests session and customise its ``User-Agent`` header.

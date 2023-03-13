@@ -81,5 +81,5 @@ def setup(app):
 
 
 nitpicky = True
-autosummary_widths_builders = ["latex"]
 ignore_missing_xrefs = ["^remotezip.RemoteZip$"]
+needspace_amount = r"5\baselineskip"
