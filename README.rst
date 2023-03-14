@@ -91,7 +91,7 @@ remote-wheel
 .. |language| image:: https://img.shields.io/github/languages/top/repo-helper/remote-wheel
 	:alt: GitHub top language
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/repo-helper/remote-wheel/v0.1.0
+.. |commits-since| image:: https://img.shields.io/github/commits-since/repo-helper/remote-wheel/v0.2.0
 	:target: https://github.com/repo-helper/remote-wheel/pulse
 	:alt: GitHub commits since tagged version
 
