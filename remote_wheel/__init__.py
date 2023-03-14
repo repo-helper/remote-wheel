@@ -39,7 +39,7 @@ import csv
 import os
 import pathlib
 import platform
-from typing import IO, Any, List, Tuple, Type, TypeVar, Union
+from typing import IO, Any, List, Mapping, Tuple, Type, TypeVar, Union, cast
 from urllib.parse import urlparse
 
 # 3rd party
@@ -71,6 +71,19 @@ USER_AGENT: str = ' '.join([
 		f"requests/{requests.__version__}",
 		f"{platform.python_implementation()}/{platform.python_version()}",
 		])
+
+
+class _WheelFetcher(remotezip.RemoteFetcher):
+
+	def _request(self, kwargs: Mapping) -> Tuple[Any, requests.models.CaseInsensitiveDict]:
+		url = self._url  # type: ignore[attr-defined]
+		res = url.get(stream=True, **kwargs)
+		res.raise_for_status()
+
+		if "Content-Range" not in res.headers:
+			raise remotezip.RangeNotSupported(f"The server at {url.netloc} doesn't support range requests")
+
+		return res.raw, res.headers["Content-Range"]
 
 
 class RemoteZipFile(remotezip.RemoteZip, handy_archives.ZipFile):
@@ -114,30 +127,17 @@ class RemoteZipFile(remotezip.RemoteZip, handy_archives.ZipFile):
 		if auth is not None:
 			self.url.session.auth = auth
 
-		self.kwargs = {}
-
 		if "mode" in kwargs:
 			raise TypeError("__init__() got an unexpected keyword argument 'mode'")
 
-		rio: IO[bytes] = remotezip.RemoteIO(self.fetch_fun, initial_buffer_size)  # type: ignore
+		fetcher = _WheelFetcher(
+				self.url,  # type: ignore[arg-type]
+				self.url.session,
+				support_suffix_range=False,
+				)
+		rio: IO[bytes] = cast(IO[bytes], remotezip.RemoteIO(fetcher.fetch, initial_buffer_size))
 		handy_archives.ZipFile.__init__(self, rio, **kwargs)
-		rio.set_pos2size(self.get_position2size())  # type: ignore
-
-	@staticmethod
-	def request(  # noqa: D102
-			url: RequestsURL,
-			range_header,
-			kwargs,
-			) -> Tuple[Any, requests.models.CaseInsensitiveDict]:
-		kwargs["headers"] = headers = dict(kwargs.get("headers", {}))
-		headers["Range"] = range_header
-		res = url.get(stream=True, **kwargs)
-		res.raise_for_status()
-
-		if "Content-Range" not in res.headers:
-			raise remotezip.RangeNotSupported(f"The server at {url.netloc} doesn't support range requests")
-
-		return res.raw, res.headers
+		rio.set_position_to_size(self._get_position_to_size())  # type: ignore[attr-defined]
 
 	def close(self) -> None:  # noqa: D102
 		self.url.session.close()
@@ -245,7 +245,7 @@ class RemoteWheelDistribution(DistributionType, Tuple[str, Version, str, handy_a
 		"""
 
 		return WheelDistribution.read_file(
-				self,  # type: ignore
+				self,  # type: ignore[arg-type]
 				filename,
 				)
 
@@ -257,7 +257,7 @@ class RemoteWheelDistribution(DistributionType, Tuple[str, Version, str, handy_a
 		"""
 
 		return WheelDistribution.has_file(
-				self,  # type: ignore
+				self,  # type: ignore[arg-type]
 				filename,
 				)
 
