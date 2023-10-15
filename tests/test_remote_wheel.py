@@ -129,12 +129,12 @@ class TestRemoteWheelDistribution:
 				match="The server at remote-wheel-test.repo-helper.uk doesn't support range requests",
 				):
 			wd = RemoteWheelDistribution.from_url(
-					"http://remote-wheel-test.repo-helper.uk/pydash-5.0.0-py3-none-any.whl",
+					"https://remote-wheel-test.repo-helper.uk/pydash-5.0.0-py3-none-any.whl",
 					)
 
 	def test_remotezip_auth(self, advanced_file_regression: AdvancedFileRegressionFixture):
 
-		url = "http://remote-wheel-test.repo-helper.uk/toml-0.10.2-py2.py3-none-any.whl"
+		url = "https://remote-wheel-test.repo-helper.uk/toml-0.10.2-py2.py3-none-any.whl"
 		wheel_zip = RemoteZipFile(url, initial_buffer_size=100, auth=("user", "password"))
 		wd = RemoteWheelDistribution("toml", Version("0.10.2"), url, wheel_zip)
 
