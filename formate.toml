@@ -48,4 +48,4 @@ known_third_party = [
     "requests",
     "shippinglabel",
 ]
-known_first_party = "remote_wheel"
+known_first_party = [ "remote_wheel",]
