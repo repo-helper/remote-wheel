@@ -10,12 +10,12 @@ readme = "README.rst"
 keywords = [ "dist-info", "http-range", "metadata", "pep427", "pypi", "wheel",]
 dynamic = [ "requires-python", "classifiers", "dependencies",]
 
+[project.license]
+file = "LICENSE"
+
 [[project.authors]]
 name = "Dominic Davis-Foster"
 email = "dominic@davis-foster.co.uk"
-
-[project.license]
-file = "LICENSE"
 
 [project.urls]
 Homepage = "https://github.com/repo-helper/remote-wheel"
