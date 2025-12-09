@@ -46,6 +46,7 @@ from urllib.parse import urlparse
 import handy_archives
 import remotezip
 import requests
+import urllib3
 from apeye.requests_url import RequestsURL
 from apeye.url import URL
 from dist_meta import wheel
@@ -76,12 +77,14 @@ USER_AGENT: str = ' '.join([
 class _WheelFetcher(remotezip.RemoteFetcher):
 
 	def _request(self, kwargs: Mapping) -> Tuple[Any, requests.models.CaseInsensitiveDict]:
-		url = self._url  # type: ignore[attr-defined]
-		res = url.get(stream=True, **kwargs)
+		url: RequestsURL = self._url  # type: ignore[attr-defined]
+		res: requests.Response = url.get(stream=True, **kwargs)
 		res.raise_for_status()
 
 		if "Content-Range" not in res.headers:
 			raise remotezip.RangeNotSupported(f"The server at {url.netloc} doesn't support range requests")
+		if "Content-Encoding" in res.headers:
+			raise NotImplementedError(f"The server at {url.netloc} returned a 'Content-Encoding' header.")
 
 		return res.raw, res.headers["Content-Range"]
 
@@ -123,6 +126,8 @@ class RemoteZipFile(remotezip.RemoteZip, handy_archives.ZipFile):
 			self.url = RequestsURL(url)
 			self.url.session = requests.Session()
 			self.url.session.headers["User-Agent"] = USER_AGENT
+
+		self.url.session.headers["Accept-Encoding"] = urllib3.util.SKIP_HEADER
 
 		if auth is not None:
 			self.url.session.auth = auth
