@@ -76,7 +76,7 @@ USER_AGENT: str = ' '.join([
 
 class _WheelFetcher(remotezip.RemoteFetcher):
 
-	def _request(self, kwargs: Mapping) -> Tuple[Any, requests.models.CaseInsensitiveDict]:
+	def _request(self, kwargs: Mapping) -> Tuple[Any, str]:
 		url: RequestsURL = self._url  # type: ignore[attr-defined]
 		res: requests.Response = url.get(stream=True, **kwargs)
 		res.raise_for_status()
