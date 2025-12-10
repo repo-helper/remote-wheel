@@ -43,6 +43,7 @@ known_third_party = [
     "remotezip",
     "requests",
     "shippinglabel",
+    "urllib3",
 ]
 known_first_party = [ "remote_wheel",]
 
