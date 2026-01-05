@@ -27,24 +27,6 @@ lines_between_types = 0
 use_parentheses = true
 remove_redundant_aliases = true
 default_section = "THIRDPARTY"
-known_third_party = [
-    "apeye",
-    "coincidence",
-    "coverage",
-    "coverage_pyver_pragma",
-    "dist_meta",
-    "handy_archives",
-    "importlib_metadata",
-    "packaging",
-    "pytest",
-    "pytest_cov",
-    "pytest_randomly",
-    "pytest_timeout",
-    "remotezip",
-    "requests",
-    "shippinglabel",
-    "urllib3",
-]
 known_first_party = [ "remote_wheel",]
 
 [config]
