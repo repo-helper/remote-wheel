@@ -89,7 +89,7 @@ class _WheelFetcher(remotezip.RemoteFetcher):
 		return res.raw, res.headers["Content-Range"]
 
 
-class RemoteZipFile(remotezip.RemoteZip, handy_archives.ZipFile):
+class RemoteZipFile(remotezip.RemoteZip, handy_archives.ZipFile):  # noqa: PRM002
 	"""
 	Subclass of :class:`handy_archives.ZipFile` for accessing zip files using `HTTP Range requests`_.
 
@@ -175,13 +175,13 @@ class RemoteWheelDistribution(DistributionType, Tuple[str, Version, str, handy_a
 	__slots__ = ()
 	_fields = ("name", "version", "url", "wheel_zip")
 
-	def __new__(
-			cls: Type[_RWD],
-			name: str,
-			version: Version,
-			url: str,
-			wheel_zip: handy_archives.ZipFile,
-			) -> _RWD:
+	def __new__(  # noqa: PRM002
+		cls: Type[_RWD],
+		name: str,
+		version: Version,
+		url: str,
+		wheel_zip: handy_archives.ZipFile,
+		) -> _RWD:
 		"""
 		Construct a new :class:`~.RemoteWheelDistribution` object.
 
