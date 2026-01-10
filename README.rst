@@ -103,7 +103,7 @@ remote-wheel
 	:alt: Maintenance
 
 .. |pypi-downloads| image:: https://img.shields.io/pypi/dm/remote-wheel
-	:target: https://pypi.org/project/remote-wheel/
+	:target: https://pypistats.org/packages/remote-wheel
 	:alt: PyPI - Downloads
 
 .. end shields
