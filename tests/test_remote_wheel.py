@@ -91,12 +91,14 @@ class TestRemoteWheelDistribution:
 		assert isinstance(wd.wheel_zip, RemoteZipFile)
 
 		advanced_file_regression.check(
-				wd.wheel_zip.read("domdf_python_tools/__init__.py").decode("UTF-8"), extension="._py"
+				wd.wheel_zip.read("domdf_python_tools/__init__.py").decode("UTF-8"),
+				extension="._py",
 				)
 
 		with wd:
 			advanced_file_regression.check(
-					wd.wheel_zip.read("domdf_python_tools/__init__.py").decode("UTF-8"), extension="._py"
+					wd.wheel_zip.read("domdf_python_tools/__init__.py").decode("UTF-8"),
+					extension="._py",
 					)
 
 		assert wd.wheel_zip.fp is None
@@ -117,7 +119,8 @@ class TestRemoteWheelDistribution:
 
 		with wd:
 			advanced_file_regression.check(
-					wd.wheel_zip.read("pydash/__init__.py").decode("UTF-8"), extension="._py"
+					wd.wheel_zip.read("pydash/__init__.py").decode("UTF-8"),
+					extension="._py",
 					)
 
 		assert wd.wheel_zip.fp is None

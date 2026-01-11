@@ -181,7 +181,7 @@ class RemoteWheelDistribution(DistributionType, Tuple[str, Version, str, handy_a
 		version: Version,
 		url: str,
 		wheel_zip: handy_archives.ZipFile,
-		) -> _RWD:
+	) -> _RWD:
 		"""
 		Construct a new :class:`~.RemoteWheelDistribution` object.
 
