@@ -131,7 +131,7 @@ class TestRemoteWheelDistribution:
 				remotezip.RangeNotSupported,
 				match="The server at remote-wheel-test.repo-helper.uk doesn't support range requests",
 				):
-			wd = RemoteWheelDistribution.from_url(
+			RemoteWheelDistribution.from_url(
 					"https://remote-wheel-test.repo-helper.uk/pydash-5.0.0-py3-none-any.whl",
 					)
 

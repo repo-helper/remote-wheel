@@ -225,8 +225,7 @@ class RemoteWheelDistribution(DistributionType, Tuple[str, Version, str, handy_a
 		"""  # noqa: RST306
 
 		url = str(url)
-
-		scheme, netloc, path, params, query, fragment = urlparse(url)
+		path = urlparse(url).path
 
 		filename = pathlib.PurePosixPath(os.path.basename(path))
 		name, version, *_ = _parse_wheel_filename(filename)
