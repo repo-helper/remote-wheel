@@ -132,7 +132,7 @@ Examples
 
 .. code-block:: pycon
 
-	>>> from shippinglabel.pypi import get_wheel_url
+	>>> from shippinglabel_pypi import get_wheel_url
 	>>> from remote_wheel import RemoteWheelDistribution
 	>>> with RemoteWheelDistribution.from_url(get_wheel_url("whey", "0.0.17", strict=True)) as wheel:
 	... 	wheel
