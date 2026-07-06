@@ -108,7 +108,6 @@ class RemoteZipFile(remotezip.RemoteZip, handy_archives.ZipFile):  # noqa: PRM00
 	Other keyword arguments taken by :class:`zipfile.ZipFile` are accepted, except ``mode``.
 
 	.. _another authentication object accepted by requests: https://requests.readthedocs.io/en/master/user/authentication/
-
 	"""  # noqa: RST306
 
 	def __init__(
