@@ -216,7 +216,8 @@ class RemoteWheelDistribution(DistributionType, Tuple[str, Version, str, handy_a
 
 			.. code-block:: python
 
-				from remote_wheel import RemoteZipFile, RemoteWheelDistribution
+				from remote_wheel import RemoteWheelDistribution, RemoteZipFile
+
 				url = "https://my.private.repository/wheels/toml-0.10.2-py2.py3-none-any.whl"
 				wheel_zip = RemoteZipFile(url, initial_buffer_size=100, auth=("user", "password"))
 				wheel = RemoteWheelDistribution("toml", Version("0.10.2"), url, wheel_zip)
